@@ -1,127 +1,60 @@
-/* Importar fuente elegante */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/*aqui le vas a dar un color de fondo y un color al borde*/
+:root {
+  --background: rgb(108, 124, 245);
+  --dark: rgb(241, 234, 234);
 }
 
-body {
-  font-family: "Nunito", sans-serif;
-  background: linear-gradient(135deg, #1e1e2f, #2d2d44, #1c1b29);
-  color: #fff;
+/*estilo para toda la pagina*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* calcula las medidas del elemento*/
+}
+
+.contenedor {
+  background: var(--background ); /* te crea una variable para el color de fondo que toma el color del :root que declaraste al principio, si quieres cambiar el color de muchos lugares solo es necesario cambiarlo en el root*/
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
 }
 
-/* ======== CONTENEDOR ======== */
-.contenedor {
-  text-align: center;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.titulo h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.titulo p {
-  color: #d1d1d1;
-  font-weight: 400;
-  margin-bottom: 40px;
-}
-
-.botones {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* ======== BOTONES ======== */
-.btn {
+.box-liquid {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 18px 50px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #fff;
-  border-radius: 50px;
+  background: var(--background);
+  border: 2.5rem solid var(--dark); /* esta variable tomara el color que hayas declarado en el root en la variable --dark*/
+  width: 20rem;
+  height: 20rem;
+  outline: 0;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.btn i {
-  margin-right: 12px;
-  font-size: 1.6rem;
+.box-liquid::before {
+  content: url(oso.gif);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-liquid::after {
+  content: "";
+  position: absolute;
+  background: var(--background);
+  height: 200%;
+  width: 200%;
+  bottom: -50%;
+  left: -50%;
+  border-radius: 40%;
+  animation: spin 10s ease-out infinite;
 }
 
-/* Efecto base hover */
-.btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* ========= BOTÓN YOUTUBE ========= */
-.btn-1 {
-  background: linear-gradient(45deg, #ff0000, #cc0000);
-}
-.btn-1:hover {
-  box-shadow: 0 0 20px #ff0000;
-}
-
-/* ========= BOTÓN TWITTER (X) ========= */
-.btn-2 {
-  background: linear-gradient(45deg, #000000, #333333);
-}
-.btn-2:hover {
-  box-shadow: 0 0 20px #ffffff;
-  color: #00acee;
-}
-
-/* ========= BOTÓN LINKEDIN ========= */
-.btn-3 {
-  background: linear-gradient(45deg, #0077b5, #004f7a);
-}
-.btn-3:hover {
-  box-shadow: 0 0 20px #00a0dc;
-}
-
-/* ========= BOTÓN SPOTIFY ========= */
-.btn-4 {
-  background: linear-gradient(45deg, #1db954, #128c38);
-}
-.btn-4:hover {
-  box-shadow: 0 0 20px #1db954;
-}
-
-/* ========= BOTÓN TIKTOK ========= */
-.btn-5 {
-  background: linear-gradient(45deg, #000000, #111111);
-  border: 2px solid #25f4ee;
-}
-.btn-5:hover {
-  box-shadow: 0 0 25px #25f4ee;
-  color: #25f4ee;
-}
-
-/* ======== ANIMACIONES ======== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/*keyframes define los pasos que seguira un elemento durante la animacion en este caso en el plano cartesiano se movera en sentido de las Y*/
+@keyframes spin {
+  0% {
+    transform: translateY(0) rotate(0deg);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  100% {
+    transform: translateY(-100%) rotate(-500deg);
   }
 }
